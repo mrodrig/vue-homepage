@@ -25,14 +25,14 @@ module.exports = {
     // Stylistic Issues
     'vue/attribute-hyphenation'                  : ['error', 'always'],     // enforce attribute naming style in template (about-me over aboutMe)
     'vue/html-quotes'                            : ['error', 'double'],     // enforce quotes style of HTML attributes (class='red' over class='red')
-    'vue/mustache-interpolation-spacing'         : ['error', 'never'],      // enforce unified spacing in mustache interpolations ({{action}} over {{ action }})
-    'vue/name-property-casing'                   : ['error', 'kebab-case'], // enforce specific casing for the name property in Vue components (MyActions over aboutMe and about-me)
+    'vue/mustache-interpolation-spacing'         : ['error', 'never'],      // enforce unified spacing in mustache interpolations ({{module}} over {{ module }})
+    'vue/name-property-casing'                   : ['error', 'kebab-case'], // enforce specific casing for the name property in Vue components (AboutMe over aboutMe and about-me)
     'vue/v-bind-style'                           : ['error', 'shorthand'],  // enforce v-bind directive style ( :title='title' over v-bind:title='title')
     'vue/v-on-style'                             : ['error', 'longform'],   // enforce v-on directive style (v-on:click='doSomething' over @click='doSomething')
     'vue/no-multi-spaces'                        : 'error',                 // disallow multiple spaces
     'vue/max-attributes-per-line'                : 0,                       // disable rule that requires a new line for multiple attributes
-    'vue/html-indent'							 : ['error',4],				// use 4 spaces for indents
-    'vue/script-indent'							 : ['error',4, {            // use 4 spaces for indents
+    'vue/html-indent'                            : ['error',4],             // use 4 spaces for indents
+    'vue/script-indent'                          : ['error',4, {            // use 4 spaces for indents
                                                     'switchCase': 1         // indent case within switch
                                                   }],
 
