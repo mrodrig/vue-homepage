@@ -2,9 +2,7 @@
     <div id="nav">
         <ul id="navbar">
             <li v-for="route in routes" :key="route.to">
-                <router-link :to="route.to">
-                    {{route.name}}
-                </router-link>
+                <router-link :to="route.to">{{route.name}}</router-link>
                 |
             </li>
         </ul>
@@ -28,10 +26,11 @@ export default {
 
 <style lang="less">
     #nav {
-        padding: 30px 0 30px 0;
+        padding: 1em 0 2em 0;
+        text-align: center;
 
         #navbar {
-            padding: 15px 0 15px 0;
+            padding: 1em 0 1em 0;
             list-style-type: none;
             margin: 0;
             overflow: hidden;
@@ -39,7 +38,7 @@ export default {
 
             li {
                 display: inline-block;
-                padding: 10px;
+                padding: .6em;
                 color: @lightgray;
 
                 a {

@@ -42,21 +42,23 @@ export default {
 <style lang="less">
 #footer {
     padding-top: 1em;
-}
-#identities {
-    padding-top: 1em;
+    text-align: center;
 
-    a {
-        color: black;
-        padding: .4em;
-    }
+    #identities {
+        padding-top: 1em;
 
-    .icon {
-        opacity: 0.5;
-        transition: 0.4s;
+        a {
+            color: black;
+            padding: .4em;
+        }
 
-        &:hover {
-            opacity: 1 ;
+        .icon {
+            opacity: 0.5;
+            transition: 0.4s;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }

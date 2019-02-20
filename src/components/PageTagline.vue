@@ -21,8 +21,11 @@ export default {
 
 <style lang="less">
 #tagline {
+    text-align: center;
+
     h1 {
-        -webkit-margin-after: 0;
+        margin-block-start: 1em;
+        margin-block-end: 0;
 
         a {
             color: black;
