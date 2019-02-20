@@ -10,6 +10,9 @@ module.exports = {
   },
   plugins: [ 'vue' ],
   rules: {
+    // Overrides
+    'vue/singleline-html-element-content-newline': 0,                       // allow the use of single line elements for nav bar
+
     // Possible Errors
     'vue/no-shared-component-data'               : 'error',                 // enforce component's data property to be a function
     'vue/require-default-prop'                   : 'error',                 // enforce props default values to be valid
