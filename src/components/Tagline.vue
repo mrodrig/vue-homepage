@@ -8,7 +8,7 @@
 <script>
 
 export default {
-    name: 'page-tagline',
+    name: 'tagline',
     props: {},
     data () {
         return {
@@ -22,9 +22,11 @@ export default {
 <style lang="less">
 #tagline {
     text-align: center;
+    background-color: #f4f4f4;
 
     h1 {
-        margin-block-start: 1em;
+        padding-top: 1em;
+        margin-block-start: 0;
         margin-block-end: 0;
 
         a {
@@ -40,6 +42,8 @@ export default {
 
     p {
         margin-block-start: 0em;
+        margin-block-end: 0;
+        padding-bottom: 2em;
     }
 }
 </style>

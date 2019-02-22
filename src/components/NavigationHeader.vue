@@ -3,7 +3,6 @@
         <ul id="navbar">
             <li v-for="route in routes" :key="route.to">
                 <router-link :to="route.to">{{route.name}}</router-link>
-                |
             </li>
         </ul>
     </div>
@@ -17,7 +16,9 @@ export default {
         return {
             routes: [
                 { name: 'Home', to: '/' },
-                { name: 'About', to: '/about' }
+                { name: 'About', to: '/about' },
+                { name: 'Résumé', to: '/resume' },
+                { name: 'Contact', to: '/contact' }
             ]
         };
     }
@@ -26,7 +27,7 @@ export default {
 
 <style lang="less">
     #nav {
-        padding: 1em 0 2em 0;
+        padding: 0;
         text-align: center;
 
         #navbar {
@@ -39,10 +40,14 @@ export default {
             li {
                 display: inline-block;
                 padding: .6em;
+                padding-left: 1.5em;
+                padding-right: 1.5em;
                 color: @lightgray;
 
                 a {
                     font-weight: bold;
+                    color: @lightgray;
+                    text-decoration: none;
 
                     &:visited {
                         color: @lightgray;

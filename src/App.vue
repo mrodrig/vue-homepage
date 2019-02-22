@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <page-tagline />
+        <tagline />
         <navigation-header />
         <router-view />
         <page-footer />
@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import pageTagline from './components/PageTagline.vue';
+import tagline from './components/Tagline.vue';
 import navigationHeader from './components/NavigationHeader.vue';
 import pageFooter from './components/PageFooter.vue';
 
 export default {
     name: 'app',
     components: {
-        pageTagline,
+        tagline,
         navigationHeader,
         pageFooter
     }
