@@ -1,35 +1,114 @@
 <template>
-    <div>
-        <form action="https://api:key-90e27fb32160148dc1cc3890ef601355@api.mailgun.net/v3/michaelrodrigues.com/messages" method="post">
-            <div class="row 50%">
-                <div class="6u 12u(mobilep)">
-                    <input type="text" name="name" id="name" placeholder="Name" ng-model="name" ng-change="updateFrom()" required>
-                </div>
-                <div class="6u 12u(mobilep)">
-                    <input type="email" name="email" id="email" placeholder="Email" ng-model="email" ng-change="updateFrom()" required>
-                </div>
-                <input hidden name="from" id="from" ng-model="from">
-                <input hidden name="to" id="to" value="rodrigues.mi@husky.neu.edu">
+    <div id="contact">
+        <div class="row">
+            <p>
+                Prefer to use your email client? Click to send an email:
+                <a :href="'mailto:' + emailAddress">{{emailAddress}}</a>.
+            </p>
+        </div>
+
+        <form :action="destination" method="post">
+            <div>
+                <input id="from" type="hidden" hidden name="from" ng-model="from">
+                <input id="to" type="hidden" hidden name="to" :value="emailAddress">
             </div>
-            <div class="row 50%">
-                <div class="12u">
-                    <input type="text" name="subject" id="subject" placeholder="Subject" required />
-                </div>
+            <div class="row">
+                <input id="name" type="text" name="name" placeholder="Name" ng-model="name" required>
             </div>
-            <div class="row 50%">
-                <div class="12u">
-                    <textarea name="text" id="text" placeholder="Message" rows="5" required/>
-                </div>
+            <div class="row">
+                <input id="email" type="email" name="email" placeholder="Email" ng-model="email" required>
             </div>
-            <div class="row 50%">
-                <div class="12u">
-                    <ul class="actions">
-                        <li><input type="submit" class="button alt" value="Send Message"></li>
-                    </ul>
-                </div>
+            <div class="row">
+                <input id="subject" type="text" name="subject" placeholder="Subject" autocomplete="off" required>
+            </div>
+            <div class="row">
+                <textarea id="message" name="text" placeholder="Message" rows="5" required />
+            </div>
+            <div id="button-wrap">
+                <input type="submit" class="button" value="Send Message">
             </div>
         </form>
-
-        <p>Prefer to use your email client? Click to send an email: <a href="mailto:rodrigues.mi@husky.neu.edu">rodrigues.mi@husky.neu.edu</a>.</p>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'contact',
+    props: {},
+    data () {
+        return {
+            emailAddress: 'rodrigues.mi@husky.neu.edu',
+            username: 'api',
+            key: 'key-90e27fb32160148dc1cc3890ef601355',
+            api: 'api.mailgun.net/v3/michaelrodrigues.com/messages'
+        };
+    },
+    computed: {
+        destination: function () {
+            return 'https://' + this.username + ':' + this.key + '@' + this.api;
+        }
+    }
+};
+</script>
+
+<style lang="less">
+#contact {
+    padding: 2em 0;
+
+    /*
+     * Button centering styles from:
+     *   https://stackoverflow.com/questions/7560832/how-to-center-a-button-within-a-div
+     */
+    #button-wrap {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .row {
+        text-align: center;
+    }
+    input[type=submit] {
+        color: @white;
+        -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        background-color: @darkgray;
+        border-radius: 5px;
+        border: 0;
+        cursor: pointer;
+        line-height: 2.75em;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: -0.025em;
+        padding: .5em 1.5em;
+        font-size: .9em;
+
+        &:hover {
+            background-color: @lightblue;
+        }
+    }
+    input:not([type=submit]), textarea {
+        margin-bottom: .5em;
+        padding: .375rem .75rem;
+        width: 50%;
+        font-size: 1rem;
+        line-height: 2em;
+        color: @darkgray;
+        background-color: @white;
+        background-clip: padding-box;
+        border: 1px solid @lightgray;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        overflow: visible;
+
+        &:focus {
+            outline: none;
+            border:1px solid @lightblue;
+            box-shadow: 0 0 10px @lightgray;
+        }
+    }
+}
+</style>
