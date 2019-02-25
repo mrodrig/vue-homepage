@@ -18,6 +18,8 @@ export default {
                 { name: 'Home', to: '/' },
                 { name: 'About', to: '/about' },
                 { name: 'Résumé', to: '/resume' },
+                { name: 'Projects', to: '/projects' },
+                { name: 'Photography', to: '/photography' },
                 { name: 'Contact', to: '/contact' }
             ]
         };
@@ -48,9 +50,14 @@ export default {
                     font-weight: bold;
                     color: @lightgray;
                     text-decoration: none;
+                    padding: 1em;
 
                     &:visited {
                         color: @lightgray;
+                    }
+
+                    &:hover {
+                        color: @white;
                     }
 
                     &.router-link-exact-active {

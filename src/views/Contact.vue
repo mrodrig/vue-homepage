@@ -3,26 +3,26 @@
         <div class="row">
             <p>
                 Prefer to use your email client? Click to send an email:
-                <a :href="'mailto:' + emailAddress">{{emailAddress}}</a>.
+                <a :href="mailTo">{{destinationEmailAddress}}</a>.
             </p>
         </div>
 
         <form :action="destination" method="post">
             <div>
-                <input id="from" type="hidden" hidden name="from" ng-model="from">
-                <input id="to" type="hidden" hidden name="to" :value="emailAddress">
+                <input id="from" v-model="from" type="hidden" hidden name="from">
+                <input id="to" v-model="destinationEmailAddress" type="hidden" hidden name="to">
             </div>
             <div class="row">
-                <input id="name" type="text" name="name" placeholder="Name" ng-model="name" required>
+                <input id="name" v-model="name" type="text" name="name" placeholder="Name" required>
             </div>
             <div class="row">
-                <input id="email" type="email" name="email" placeholder="Email" ng-model="email" required>
+                <input id="email" v-model="email" type="email" name="email" placeholder="Email" required>
             </div>
             <div class="row">
-                <input id="subject" type="text" name="subject" placeholder="Subject" autocomplete="off" required>
+                <input id="subject" v-model="subject" type="text" name="subject" placeholder="Subject" autocomplete="off" required>
             </div>
             <div class="row">
-                <textarea id="message" name="text" placeholder="Message" rows="5" required />
+                <textarea id="message" v-model="body" name="text" placeholder="Message" rows="5" required />
             </div>
             <div id="button-wrap">
                 <input type="submit" class="button" value="Send Message">
@@ -37,15 +37,27 @@ export default {
     props: {},
     data () {
         return {
-            emailAddress: 'rodrigues.mi@husky.neu.edu',
+            name: '',
+            email: '',
+            subject: '',
+            body: '',
+            destinationEmailAddress: 'rodrigues.mi@husky.neu.edu',
             username: 'api',
             key: 'key-90e27fb32160148dc1cc3890ef601355',
-            api: 'api.mailgun.net/v3/michaelrodrigues.com/messages'
+            api: 'api.mailgun.net/v3/michaelrodrigues.com/messages',
         };
     },
     computed: {
+        from: function () {
+            return (this.name || '') + ' <' + (this.email || '') + '>';
+        },
         destination: function () {
             return 'https://' + this.username + ':' + this.key + '@' + this.api;
+        },
+        mailTo: function () {
+            return 'mailto: ' + this.destinationEmailAddress
+                + '?subject=' + this.subject
+                + '&body=' + this.body;
         }
     }
 };

@@ -27,3 +27,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Photography Instagram Info:
+References: 
+* https://hackernoon.com/build-an-instagram-feed-app-with-just-javascript-using-expo-react-native-97c0e799b5cf
+* https://kevinongko.github.io/vue-instagram/
+* https://github.com/kevinongko/vue-instagram

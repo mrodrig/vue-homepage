@@ -18,6 +18,16 @@ export default new Router({
             component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
         },
         {
+            path: '/resume',
+            name: 'resume',
+            component: () => import(/* webpackChunkName: "resume" */ './views/Resume.vue')
+        },
+        {
+            path: '/photography',
+            name: 'photography',
+            component: () => import(/* webpackChunkName: "photography" */ './views/Photography.vue')
+        },
+        {
             path: '/contact',
             name: 'contact',
             component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue')
