@@ -1,5 +1,10 @@
 <template>
     <div id="resume" class="center">
+        <p>
+            Looking for my
+            <a href="pdf/cv.pdf">Curriculum Vitae (CV)</a>
+            instead?
+        </p>
         <pdf src="pdf/resume.pdf" class="inline" :page="1">
             <template slot="loading">
                 <div class="center">
@@ -8,11 +13,6 @@
                 </div>
             </template>
         </pdf>
-        <p>
-            Looking for my
-            <a href="pdf/cv.pdf">Curriculum Vitae (CV)</a>
-            instead?
-        </p>
     </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
 
 <style lang="less">
     #resume {
+        padding-top: 1em;
     }
     .center {
         text-align: center;

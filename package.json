@@ -10,9 +10,12 @@
     "deploy:github": "push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
+    "axios": "0.18.0",
+    "es6-promise": "4.2.6",
     "pdfvuer": "1.1.0",
+    "qs": "6.6.0",
     "vue": "2.6.6",
-    "vue-instagram": "^2.0.1",
+    "vue-instagram": "2.0.1",
     "vue-material-design-icons": "3.0.0",
     "vue-router": "3.0.2"
   },

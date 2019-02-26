@@ -16,7 +16,7 @@
                 <input id="name" v-model="name" type="text" name="name" placeholder="Name" required>
             </div>
             <div class="row">
-                <input id="email" v-model="email" type="email" name="email" placeholder="Email" required>
+                <input id="reply-to" v-model="replyTo" type="email" name="h:Reply-To" placeholder="Email" required>
             </div>
             <div class="row">
                 <input id="subject" v-model="subject" type="text" name="subject" placeholder="Subject" autocomplete="off" required>
@@ -37,8 +37,9 @@ export default {
     props: {},
     data () {
         return {
+            sendFromEmailAddress: 'contact@michaelrodrigues.com',
             name: '',
-            email: '',
+            replyTo: '',
             subject: '',
             body: '',
             destinationEmailAddress: 'rodrigues.mi@husky.neu.edu',
@@ -49,7 +50,7 @@ export default {
     },
     computed: {
         from: function () {
-            return (this.name || '') + ' <' + (this.email || '') + '>';
+            return (this.name || '') + ' <' + this.sendFromEmailAddress + '>';
         },
         destination: function () {
             return 'https://' + this.username + ':' + this.key + '@' + this.api;
