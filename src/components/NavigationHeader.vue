@@ -42,8 +42,8 @@ export default {
             li {
                 display: inline-block;
                 padding: .6em;
-                padding-left: 1.5em;
-                padding-right: 1.5em;
+                padding-left: 1.1em;
+                padding-right: 1.1em;
                 color: @lightgray;
 
                 a {
