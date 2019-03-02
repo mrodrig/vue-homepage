@@ -5,14 +5,19 @@
             <a href="pdf/cv.pdf">Curriculum Vitae (CV)</a>
             instead?
         </p>
-        <pdf src="pdf/resume.pdf" class="inline" :page="1">
-            <template slot="loading">
-                <div class="center">
-                    <p>Please wait, résumé loading...</p>
-                    <img id="loading" src="../assets/spinner-icon.gif" alt="Loading icon">
-                </div>
-            </template>
-        </pdf>
+        <div v-for="page in numPages" :id="page" :key="page">
+            <pdf :page="page" :src="pdfData" class="inline">
+                <template slot="loading">
+                    <div class="center">
+                        <p>Please wait, résumé loading...</p>
+                        <img id="loading" src="../assets/spinner-icon.gif" alt="Loading icon">
+                    </div>
+                </template>
+            </pdf>
+            <div v-if="numPages > 1" class="center">
+                {{page}} of {{numPages}}
+            </div>
+        </div>
     </div>
 </template>
 
@@ -23,6 +28,32 @@ export default {
     name: 'resume',
     components: {
         pdf
+    },
+    data () {
+        return {
+            pdfSource: 'pdf/resume.pdf',
+            numPages: 0,
+            pdfData: undefined
+        };
+    },
+    watch: {
+        show: function (s) {
+            if(s) {
+                this.getPdf();
+            }
+        }
+    },
+    mounted () {
+        this.getPdf();
+    },
+    methods: {
+        getPdf() {
+            let self = this;
+            self.pdfData = pdf.createLoadingTask(this.pdfSource);
+            self.pdfData.then(pdf => {
+                self.numPages = pdf.numPages;
+            });
+        }
     }
 };
 </script>
