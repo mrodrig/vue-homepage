@@ -41,7 +41,7 @@ export default {
 
 <style lang="less">
 #footer {
-    padding-top: 1em;
+    margin-top: 2em;
     text-align: center;
 
     #identities {
