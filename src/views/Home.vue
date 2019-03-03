@@ -18,7 +18,7 @@
             Bachelor's Degree in Computer Science and Information Science
             (Dual Major). While working towards my Bachelor's degree, I
             completed my first Co-op at EMC Corporation in August 2013. The next
-            Co-Op that I will be able to go out on starts January, 2015 and ends
+            Co-op that I will be able to go out on starts January, 2015 and ends
             in June, 2015. I was very excited to be able to work for a company
             and gain valuable experience. It was a great experience and I
             learned a lot at EMC. The initial job responsibilities include

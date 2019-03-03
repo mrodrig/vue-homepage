@@ -4,11 +4,11 @@ import axios from 'axios';
 export default class Api {
 
     /**
-     * Sends an email via the Mailgun API
+     * Gets basic account information from Instagram
      *
      * @return {Promise}
      */
-    static sendEmail(apiUrl, email) {
-        return axios.post(apiUrl, email);
+    static getInstagramAccountInfo(token) {
+        return axios.get('https://api.instagram.com/v1/users/self/?access_token=' + token);
     }
 }

@@ -18,164 +18,205 @@
             a Canon EOS 6D Mark II.
             In the first year of ownership, I have already taken several thousand photos with it and look forward to thousands more!
         </p>
-        <h2>Recent Instagram Posts</h2>
-        <vue-instagram :token="accessToken" :count="numberOfPhotos" media-type="image">
-            <template slot="error">
-                <div class="center">Sorry, an error occurred fetching photos from Instagram.</div>
-            </template>
-            <template slot="feeds" slot-scope="props">
-                <div class="column">
-                    <div class="card">
-                        <div class="card-image">
-                            <img :src="props.feed.images.standard_resolution.url" alt="Instagram Post Photograph">
-                        </div>
 
-                        <div class="card-metadata">
-                            <div class="user">
-                                <div class="user-picture user-info">
-                                    <img :src="props.feed.user.profile_picture" alt="Instagram Profile Picture">
-                                </div>
-                                <div class="user-info">
-                                    <div class="name">{{props.feed.user.full_name}}</div>
-                                    <div class="username">
-                                        <a :href="instagramBaseUrl + props.feed.user.username">
-                                            @{{props.feed.user.username}}
+        <h2>Recent Instagram Photos</h2>
+        <div>
+            <div v-if="account" class="user">
+                <div class="user-picture user-info">
+                    <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener">
+                        <img :src="account.profile_picture" alt="Instagram Profile Picture">
+                    </a>
+                </div>
+                <div class="user-info">
+                    <div class="name">{{account.full_name}}</div>
+                    <div class="username">
+                        <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener">
+                            @{{account.username}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="photos">
+            <vue-instagram :token="accessToken" :count="numberOfPhotos" media-type="image">
+                <template slot="error">
+                    <div class="center">Sorry, an error occurred fetching photos from Instagram.</div>
+                </template>
+                <template slot="feeds" slot-scope="props">
+                    <div class="photo">
+                        <div class="card">
+                            <div class="card-image">
+                                <img :src="props.feed.images.standard_resolution.url" alt="Instagram Post Photograph">
+                            </div>
+
+                            <div class="card-metadata">
+                                <div class="card-footer">
+                                    <div class="card-footer-item">
+                                        <heart-icon class="icon" />
+                                        <span class="likes icon-text">{{props.feed.likes.count}}</span>
+                                    </div>
+                                    <div class="card-footer-item">
+                                        <comment-icon class="icon" />
+                                        <span class="comments icon-text">{{props.feed.comments.count}}</span>
+                                    </div>
+                                    <div class="card-footer-item">
+                                        <a :href="props.feed.link" target="_blank" rel="noopener">
+                                            <open-in-new-icon class="icon open-icon" />
                                         </a>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="card-footer">
-                                <div class="card-footer-item">
-                                    <heart-icon class="icon" />
-                                    <span class="likes icon-text">{{props.feed.likes.count}}</span>
-                                </div>
-                                <div class="card-footer-item">
-                                    <comment-icon class="icon" />
-                                    <span class="comments icon-text">{{props.feed.comments.count}}</span>
-                                </div>
-                                <div class="card-footer-item">
-                                    <a :href="props.feed.link" target="_blank" rel="noopener">
-                                        <link-icon class="icon link-icon" />
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                </div>
-            </template>
-            <template slot="error" slot-scope="props">
-                <div class="fancy-alert"> {{props.error.error_message}} </div>
-            </template>
-        </vue-instagram>
+                </template>
+                <template slot="error" slot-scope="props">
+                    <div class="fancy-alert"> {{props.error.error_message}} </div>
+                </template>
+            </vue-instagram>
+        </div>
     </div>
 </template>
 
 <script>
 import HeartIcon from 'vue-material-design-icons/Heart.vue';
 import CommentIcon from 'vue-material-design-icons/Comment.vue';
-import LinkIcon from 'vue-material-design-icons/Link.vue';
+import OpenInNewIcon from 'vue-material-design-icons/OpenInNew.vue';
 import VueInstagram from 'vue-instagram';
+import api from '../services/api.js';
 
 export default {
     name: 'photography',
     components: {
         HeartIcon,
         CommentIcon,
-        LinkIcon,
+        OpenInNewIcon,
         VueInstagram
     },
     data: function () {
         return {
-            numberOfPhotos: 12,
+            account: {},
+            numberOfPhotos: 18,
             instagramBaseUrl: 'https://instagram.com/',
             accessToken: '2041962474.2c405b3.21c0e46556ca405dabbff6b287e8482b'
         };
+    },
+    created () {
+        let component = this;
+
+        api.getInstagramAccountInfo(this.accessToken)
+            .then(function (data) {
+                component.account = data.data.data;
+            })
+            .catch(function (error) {
+                component.error = error;
+            });
+    },
+    methods: {
+        setSize: function (size) {
+            this.numberOfPhotos = size;
+        }
     }
 };
 </script>
 
 <style lang="less">
     #photography {
-        .column {
-            -webkit-box-flex: 0;
-            -ms-flex: none;
-            flex: none;
-            width: 33.33333%;
-            display: inline-block;
+        .user {
+            text-align: center;
+            padding-top: 1.3em;
+            padding-bottom: .3em;
 
-            .card {
-                margin: .5em;
+            * {
+                vertical-align: middle;
+            }
 
-                .card-image {
-                    margin-bottom: -6px;
-                    border-top-left-radius: 16px;
-                    border-top-right-radius: 16px;
-                    overflow: hidden;
+            .user-info {
+                display: inline-block;
+                padding-right: .5em;
+                font-size: 1.3em;
 
-                    img {
-                        width: 100%;
-                    }
+                .name {
+                    color: @darkgray;
                 }
 
-                .card-metadata {
-                    border: 1px @lightgray;
-                    border-bottom-left-radius: 16px;
-                    border-bottom-right-radius: 16px;
-                    border-style: none solid solid solid;
+                .username {
+                    a {
+                        color: @darkgray;
+                        transition: 0.3s;
+                        text-decoration: none;
 
-                    .user {
+                        &:hover {
+                            color: @lightblue;
+                        }
+                    }
+                }
+            }
+
+            .user-picture {
+                img {
+                    height: 5em;
+                    border-radius: 16px;
+                }
+            }
+        }
+
+        #photos {
+            * {
+                vertical-align: top;
+            }
+
+            .photo {
+                -webkit-box-flex: 0;
+                -ms-flex: none;
+                flex: none;
+                width: 33.33333%;
+                display: inline-block;
+
+                .card {
+                    margin: .5em;
+
+                    .card-image {
+                        margin-bottom: -6px;
+                        border-top-left-radius: 16px;
+                        border-top-right-radius: 16px;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .card-metadata {
+                        border: 1px @lightgray;
+                        border-bottom-left-radius: 16px;
+                        border-bottom-right-radius: 16px;
+                        border-style: none solid solid solid;
+                    }
+
+                    .card-footer {
                         text-align: center;
-                        padding-top: 1.3em;
-                        padding-bottom: .3em;
+                        padding-top: 1em;
+                        padding-bottom: .7em;
 
-                        .user-info {
+                        .card-footer-item {
                             display: inline-block;
-                            padding-right: .5em;
+                            width: 33.33333%;
 
-                            .name {
+                            * {
+                                vertical-align: middle;
+                            }
+
+                            .icon {
+                                vertical-align: middle;
                                 color: @darkgray;
+                                padding-right: .5em;
                             }
 
-                            .username {
-                                a {
-                                    color: @darkgray;
-                                    transition: 0.3s;
-                                    text-decoration: none;
-
-                                    &:hover {
-                                        color: @lightblue;
-                                    }
+                            .open-icon {
+                                transition: .3s;
+                                &:hover {
+                                    color: @lightblue;
                                 }
-                            }
-                        }
-
-                        .user-picture {
-                            img {
-                                height: 3em;
-                            }
-                        }
-                    }
-                }
-
-                .card-footer {
-                    text-align: center;
-                    padding-top: 1em;
-
-                    .card-footer-item {
-                        display: inline-block;
-                        width: 33.33333%;
-
-                        .icon {
-                            vertical-align: middle;
-                            color: @darkgray;
-                            padding-right: .5em;
-                        }
-
-                        .link-icon {
-                            transition: .3s;
-                            &:hover {
-                                color: @lightblue;
                             }
                         }
                     }
@@ -183,72 +224,4 @@ export default {
             }
         }
     }
-
-
-
-    /*.card {*/
-        /*background-color: #fff;*/
-        /*-webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);*/
-        /*box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);*/
-        /*color: #4a4a4a;*/
-        /*max-width: 100%;*/
-        /*position: relative;*/
-    /*}*/
-    /*.card-image {*/
-        /*display: block;*/
-        /*position: relative;*/
-    /*}*/
-    /*.image {*/
-        /*display: block;*/
-        /*position: relative;*/
-
-        /*&.is-square {*/
-            /*padding-top: 100%;*/
-        /*}*/
-
-        /*img {*/
-            /*bottom: 0;*/
-            /*left: 0;*/
-            /*position: absolute;*/
-            /*right: 0;*/
-            /*top: 0;*/
-            /*width: 100%;*/
-            /*display: block;*/
-            /*max-width: 100%;*/
-        /*}*/
-    /*}*/
-    /*.card-content {*/
-        /*padding: 1.5rem;*/
-    /*}*/
-    /*.card .media:not(:last-child) {*/
-        /*margin-bottom: .75rem;*/
-    /*}*/
-    /*.media {*/
-        /*-webkit-box-align: start;*/
-        /*-ms-flex-align: start;*/
-        /*align-items: flex-start;*/
-        /*display: -webkit-box;*/
-        /*display: -ms-flexbox;*/
-        /*display: flex;*/
-        /*text-align: left;*/
-
-        /*.media-left {*/
-            /*margin-right: 1rem;*/
-
-            /*.user-picture {*/
-                /*height: 40px;*/
-                /*width: 40px;*/
-            /*}*/
-        /*}*/
-
-        /*.media-left, .media-right {*/
-            /*-ms-flex-preferred-size: auto;*/
-            /*flex-basis: auto;*/
-            /*-webkit-box-flex: 0;*/
-            /*-ms-flex-positive: 0;*/
-            /*flex-grow: 0;*/
-            /*-ms-flex-negative: 0;*/
-            /*flex-shrink: 0;*/
-        /*}*/
-    /*}*/
 </style>
