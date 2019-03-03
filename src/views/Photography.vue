@@ -155,7 +155,7 @@ export default {
             .user-picture {
                 img {
                     height: 5em;
-                    border-radius: 16px;
+                    border-radius: 2.5em;
                 }
             }
         }
@@ -176,9 +176,8 @@ export default {
                     margin: .5em;
 
                     .card-image {
-                        margin-bottom: -6px;
-                        border-top-left-radius: 16px;
-                        border-top-right-radius: 16px;
+                        border-top-left-radius: 1em;
+                        border-top-right-radius: 1em;
                         overflow: hidden;
 
                         img {
@@ -188,8 +187,8 @@ export default {
 
                     .card-metadata {
                         border: 1px @lightgray;
-                        border-bottom-left-radius: 16px;
-                        border-bottom-right-radius: 16px;
+                        border-bottom-left-radius: 1em;
+                        border-bottom-right-radius: 1em;
                         border-style: none solid solid solid;
                     }
 

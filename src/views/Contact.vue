@@ -88,7 +88,7 @@ export default {
         -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         background-color: @darkgray;
-        border-radius: 5px;
+        border-radius: .32em;
         border: 0;
         cursor: pointer;
         line-height: 2.75em;
@@ -120,7 +120,7 @@ export default {
         &:focus {
             outline: none;
             border:1px solid @lightblue;
-            box-shadow: 0 0 10px @lightgray;
+            box-shadow: 0 0 .63em @lightgray;
         }
     }
 }

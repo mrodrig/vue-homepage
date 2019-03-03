@@ -53,7 +53,7 @@ export default {
     },
     mounted () {
         this.getPdf();
-        this.debounceReload = this.debounce(this.reload, 500);
+        this.debounceReload = this.debounce(this.reload, 300);
         window.addEventListener('resize', this.debounceReload);
     },
     beforeDestroy: function () {
