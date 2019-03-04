@@ -7,8 +7,8 @@ Vue.config.productionTip = false;
 
 // Configure Google Analytics
 switch(process.env.NODE_ENV) {
-    // case 'development':
-    //     break;
+    case 'development':
+        break;
     case 'production':
     default:
         Vue.use(VueAnalytics, {
