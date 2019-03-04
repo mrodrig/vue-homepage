@@ -15,8 +15,8 @@
         </p>
         <p>
             In search of better quality and more fine-grained control, I recently purchased my first full-frame DSLR camera -
-            a Canon EOS 6D Mark II.
-            In the first year of ownership, I have already taken several thousand photos with it and look forward to thousands more!
+            a Canon EOS 6D Mark II with the 24-105mm f/4L II lens and Canon battery grip.
+            In the first year of ownership, I have already taken several thousand photos with it and look forward to taking thousands more!
         </p>
 
         <h2>Recent Instagram Photos</h2>

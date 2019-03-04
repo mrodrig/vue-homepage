@@ -1,24 +1,34 @@
 <template>
     <div id="projects">
-        <div class="projects-group">
+        <div id="npm" class="projects-group">
             <h2>Node Modules</h2>
-            <npm-project v-for="npmProject in npmProjects" :key="npmProject.name" :module-name="npmProject.name" :description="npmProject.description" />
+            <project v-for="npmProject in npmProjects" :key="npmProject.name" :project="npmProject" :type="'npm'" />
+        </div>
+        <div id="server" class="projects-group">
+            <h2>Website/Server Development and Management</h2>
+            <project v-for="serverProject in serverProjects" :key="serverProject.name" :project="serverProject" :type="'server'" />
+        </div>
+        <div id="courses" class="projects-group">
+            <h2>Course Projects</h2>
+            <project v-for="courseProject in courseProjects" :key="courseProject.name" :project="courseProject" :type="'course'" />
         </div>
     </div>
 </template>
 
 <script>
-import npmProject from '../components/NPMProject.vue';
-import npmProjects from '../data/npmProjects.js';
+import project from '../components/Project.vue';
+import projects from '../data/projects.js';
 
 export default {
     name: 'contact',
     components: {
-        npmProject
+        project
     },
     data () {
         return {
-            npmProjects: npmProjects.projects
+            npmProjects: projects.npmProjects,
+            serverProjects: projects.serverProjects,
+            courseProjects: projects.courseProjects
         };
     }
 };
@@ -26,6 +36,14 @@ export default {
 
 <style lang="less">
 #projects {
+    .projects-group {
+        padding-top: 1em;
+    }
 
+    #server, #courses {
+        .project-title {
+            min-width: 26em;
+        }
+    }
 }
 </style>

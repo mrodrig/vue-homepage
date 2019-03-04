@@ -1,8 +1,20 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import VueAnalytics from 'vue-analytics';
 
 Vue.config.productionTip = false;
+
+// Configure Google Analytics
+switch(process.env.NODE_ENV) {
+    // case 'development':
+    //     break;
+    case 'production':
+    default:
+        Vue.use(VueAnalytics, {
+            id: 'UA-135518236-1'
+        });
+}
 
 new Vue({
     router,

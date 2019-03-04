@@ -3,7 +3,7 @@
         <div class="row">
             <p>
                 Prefer to use your email client? Click to send an email:
-                <a :href="mailTo">{{destinationEmailAddress}}</a>.
+                <a :href="mailTo" class="mailto" rel="noopener">{{destinationEmailAddress}}</a>.
             </p>
         </div>
 
@@ -68,6 +68,37 @@ export default {
 #contact {
     padding: 2em 0;
 
+
+    .row {
+        text-align: center;
+
+        .mailto {
+            text-decoration: none;
+            color: @lightblue;
+        }
+
+        input:not([type=submit]), textarea {
+            margin-bottom: .5em;
+            padding: .375rem .75rem;
+            width: 50%;
+            font-size: 1rem;
+            line-height: 2em;
+            color: @darkgray;
+            background-color: @white;
+            background-clip: padding-box;
+            border: 1px solid @lightgray;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            overflow: visible;
+
+            &:focus {
+                outline: none;
+                border:1px solid @lightblue;
+                box-shadow: 0 0 .63em @lightgray;
+            }
+        }
+    }
+
     /*
      * Button centering styles from:
      *   https://stackoverflow.com/questions/7560832/how-to-center-a-button-within-a-div
@@ -77,51 +108,30 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-    .row {
-        text-align: center;
-    }
-    input[type=submit] {
-        color: @white;
-        -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        background-color: @darkgray;
-        border-radius: .32em;
-        border: 0;
-        cursor: pointer;
-        line-height: 2.75em;
-        text-align: center;
-        text-decoration: none;
-        font-weight: bold;
-        letter-spacing: -0.025em;
-        padding: .5em 1.5em;
-        font-size: .9em;
 
-        &:hover {
-            background-color: @lightblue;
+        input[type=submit] {
+            color: @white;
+            -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            background-color: @darkgray;
+            border-radius: .32em;
+            border: 0;
+            cursor: pointer;
+            line-height: 2.75em;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: -0.025em;
+            padding: .5em 1.5em;
+            font-size: .9em;
+
+            &:hover {
+                background-color: black;
+            }
         }
     }
-    input:not([type=submit]), textarea {
-        margin-bottom: .5em;
-        padding: .375rem .75rem;
-        width: 50%;
-        font-size: 1rem;
-        line-height: 2em;
-        color: @darkgray;
-        background-color: @white;
-        background-clip: padding-box;
-        border: 1px solid @lightgray;
-        border-radius: .25rem;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-        overflow: visible;
 
-        &:focus {
-            outline: none;
-            border:1px solid @lightblue;
-            box-shadow: 0 0 .63em @lightgray;
-        }
-    }
 }
 </style>
