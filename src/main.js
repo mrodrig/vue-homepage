@@ -12,7 +12,8 @@ switch(process.env.NODE_ENV) {
     case 'production':
     default:
         Vue.use(VueAnalytics, {
-            id: 'UA-135518236-1'
+            id: 'UA-135518236-1',
+            router: router
         });
 }
 
