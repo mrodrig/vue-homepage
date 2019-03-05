@@ -71,20 +71,6 @@
     </div>
 </template>
 
-<script>
-//https://github.com/MatteoGabriele/vue-analytics/blob/HEAD/docs/installation.md
-import { page } from 'vue-analytics';
-
-export default {
-    name: 'home',
-    methods: {
-        track () {
-            page('/');
-        }
-    }
-};
-</script>
-
 <style lang="less">
 
 </style>
