@@ -9,7 +9,7 @@
             </div>
         </div>
         <div v-for="page in numPages" :id="page" :key="page">
-            <pdf :page="page" :src="pdfData" :scale="scale" class="inline page">
+            <pdf :page="page" :src="pdfData" :scale="scale" :resize="true" class="inline page">
                 <template slot="loading">
                     <div class="center">
                         <p>Please wait, résumé loading...</p>
@@ -53,11 +53,6 @@ export default {
     },
     mounted () {
         this.getPdf();
-        this.debounceReload = this.debounce(this.reload, 300);
-        window.addEventListener('resize', this.debounceReload);
-    },
-    beforeDestroy: function () {
-        window.removeEventListener('resize', this.debounceReload);
     },
     methods: {
         getPdf: function () {
@@ -66,9 +61,6 @@ export default {
             self.pdfData.then(pdf => {
                 self.numPages = pdf.numPages;
             });
-        },
-        reload: function () {
-            window.location.reload();
         }
     }
 };

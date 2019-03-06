@@ -12,7 +12,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "es6-promise": "4.2.6",
-    "pdfvuer": "1.1.0",
+    "pdfvuer": "1.2.0",
     "qs": "6.6.0",
     "vue": "2.6.6",
     "vue-analytics": "5.16.2",
