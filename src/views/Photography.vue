@@ -103,7 +103,6 @@ export default {
     created () {
         let component = this;
 
-        this.trackInstagramClick('http://google.com');
         api.getInstagramAccountInfo(this.accessToken)
             .then(function (data) {
                 component.account = data.data.data;
