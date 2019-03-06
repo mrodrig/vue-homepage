@@ -17,6 +17,10 @@ const debug = process.env.NODE_ENV === 'production' ? {} : {
 Vue.use(VueAnalytics, {
     id: 'UA-135518236-1',
     router: router,
+    trackEvent: true,
+    autoTracking: {
+        exception: true
+    },
     debug: debug
 });
 

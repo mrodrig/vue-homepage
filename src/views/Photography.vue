@@ -23,14 +23,14 @@
         <div>
             <div v-if="account" class="user">
                 <div class="user-picture user-info">
-                    <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener">
+                    <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackInstagramClick('profile_pic')">
                         <img :src="account.profile_picture" alt="Instagram Profile Picture">
                     </a>
                 </div>
                 <div class="user-info">
                     <div class="name">{{account.full_name}}</div>
                     <div class="username">
-                        <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener">
+                        <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackInstagramClick('username')">
                             @{{account.username}}
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                                         <span class="comments icon-text">{{props.feed.comments.count}}</span>
                                     </div>
                                     <div class="card-footer-item">
-                                        <a :href="props.feed.link" target="_blank" rel="noopener">
+                                        <a :href="props.feed.link" target="_blank" rel="noopener" v-on:click="trackInstagramClick(props.feed.link)">
                                             <open-in-new-icon class="icon open-icon" />
                                         </a>
                                     </div>
@@ -103,6 +103,7 @@ export default {
     created () {
         let component = this;
 
+        this.trackInstagramClick('http://google.com');
         api.getInstagramAccountInfo(this.accessToken)
             .then(function (data) {
                 component.account = data.data.data;
@@ -112,9 +113,15 @@ export default {
             });
     },
     methods: {
-        setSize: function (size) {
-            this.numberOfPhotos = size;
-        }
+        trackInstagramClick: function (href) {
+            this.$ga.event({
+                eventCategory: 'photography',
+                eventAction: 'click',
+                eventLabel: 'instagram_post_link',
+                eventValue: href
+            });
+        },
+
     }
 };
 </script>
