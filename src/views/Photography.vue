@@ -23,7 +23,7 @@
         <div>
             <div v-if="account" class="user">
                 <div class="user-picture user-info">
-                    <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackInstagramClick('profile_pic')">
+                    <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackInstagramClick('profile_picture')">
                         <img :src="account.profile_picture" alt="Instagram Profile Picture">
                     </a>
                 </div>
@@ -116,8 +116,7 @@ export default {
             this.$ga.event({
                 eventCategory: 'photography',
                 eventAction: 'click',
-                eventLabel: 'instagram_post_link',
-                eventValue: href
+                eventLabel: href
             });
         },
 
