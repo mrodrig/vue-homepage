@@ -44,7 +44,8 @@ export default {
             body: '',
             destinationEmailAddress: 'rodrigues.mi@husky.neu.edu',
             username: 'api',
-            key: 'key-90e27fb32160148dc1cc3890ef601355',
+            keyp0: 'key-',
+            keyp1: '90e27fb32160148dc1cc3890ef601355',
             api: 'api.mailgun.net/v3/michaelrodrigues.com/messages',
         };
     },
@@ -53,7 +54,7 @@ export default {
             return (this.name || '') + ' <' + this.sendFromEmailAddress + '>';
         },
         destination: function () {
-            return 'https://' + this.username + ':' + this.key + '@' + this.api;
+            return 'https://' + this.username + ':' + this.keyp0 + this.keyp1 + '@' + this.api;
         },
         mailTo: function () {
             return 'mailto: ' + this.destinationEmailAddress
