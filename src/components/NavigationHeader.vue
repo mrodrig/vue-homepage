@@ -1,7 +1,7 @@
 <template>
     <div id="nav">
         <ul id="navbar">
-            <li v-for="route in routes" :key="route.to">
+            <li v-for="route in routes" :key="route.to" v-on:click="trackClick(route.to)">
                 <router-link :to="route.to">{{route.name}}</router-link>
             </li>
         </ul>
@@ -23,6 +23,15 @@ export default {
                 { name: 'Contact', to: '/contact' }
             ]
         };
+    },
+    methods: {
+        trackClick: function (route) {
+            this.$ga.event({
+                eventCategory: 'navigation',
+                eventAction: 'click',
+                eventLabel: route
+            });
+        }
     }
 };
 </script>

@@ -4,6 +4,20 @@
     </div>
 </template>
 
+<script>
+export default {
+    name: 'not-found',
+    created () {
+        // Log the route that the user tried to access
+        this.$ga.event({
+            eventCategory: 'navigation',
+            eventAction: 'not-found',
+            eventLabel: this.$route.path
+        });
+    }
+};
+</script>
+
 <style lang="less">
     #not-found {
         text-align: center;

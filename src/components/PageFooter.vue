@@ -4,13 +4,13 @@
             &copy; 2014 - {{currentYear}} Michael Rodrigues. All Rights Reserved.
         </div>
         <div id="identities">
-            <a href="https://github.com/mrodrig" target="_blank" rel="noopener">
+            <a :href="githubUrl" target="_blank" rel="noopener" v-on:click="trackClick('github')">
                 <github-circle class="icon" :size="iconSize" />
             </a>
-            <a href="https://www.linkedin.com/in/rodriguesmichael" target="_blank" rel="noopener">
+            <a :href="linkedInUrl" target="_blank" rel="noopener" v-on:click="trackClick('linkedIn')">
                 <linkedin class="icon" :size="iconSize" />
             </a>
-            <a href="mailto:rodrigues.mi@husky.neu.edu">
+            <a :href="emailUrl" v-on:click="trackClick('email')">
                 <email class="icon" :size="iconSize" />
             </a>
         </div>
@@ -29,12 +29,23 @@ export default {
         Linkedin,
         Email
     },
-    props: {},
     data () {
         return {
+            githubUrl: 'https://github.com/mrodrig',
+            linkedInUrl: 'https://www.linkedin.com/in/rodriguesmichael',
+            emailUrl: 'mailto:rodrigues.mi@husky.neu.edu',
             currentYear: (new Date()).getFullYear(),
             iconSize: 36
         };
+    },
+    methods: {
+        trackClick: function (iconType) {
+            this.$ga.event({
+                eventCategory: 'footer',
+                eventAction: 'click',
+                eventLabel: iconType
+            });
+        }
     }
 };
 </script>

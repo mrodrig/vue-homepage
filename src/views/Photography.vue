@@ -23,14 +23,14 @@
         <div>
             <div v-if="account" class="user">
                 <div class="user-picture user-info">
-                    <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackInstagramClick('profile_picture')">
+                    <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackClick('profile_picture')">
                         <img :src="account.profile_picture" alt="Instagram Profile Picture">
                     </a>
                 </div>
                 <div class="user-info">
                     <div class="name">{{account.full_name}}</div>
                     <div class="username">
-                        <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackInstagramClick('username')">
+                        <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackClick('username')">
                             @{{account.username}}
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                                         <span class="comments icon-text">{{props.feed.comments.count}}</span>
                                     </div>
                                     <div class="card-footer-item">
-                                        <a :href="props.feed.link" target="_blank" rel="noopener" v-on:click="trackInstagramClick(props.feed.link)">
+                                        <a :href="props.feed.link" target="_blank" rel="noopener" v-on:click="trackClick(props.feed.link)">
                                             <open-in-new-icon class="icon open-icon" />
                                         </a>
                                     </div>
@@ -112,14 +112,13 @@ export default {
             });
     },
     methods: {
-        trackInstagramClick: function (href) {
+        trackClick: function (eventLabel) {
             this.$ga.event({
                 eventCategory: 'photography',
                 eventAction: 'click',
-                eventLabel: href
+                eventLabel: eventLabel
             });
-        },
-
+        }
     }
 };
 </script>
