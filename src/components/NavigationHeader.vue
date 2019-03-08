@@ -16,7 +16,6 @@ export default {
         return {
             routes: [
                 { name: 'Home', to: '/' },
-                { name: 'About', to: '/about' },
                 { name: 'Résumé', to: '/resume' },
                 { name: 'Projects', to: '/projects' },
                 { name: 'Photography', to: '/photography' },

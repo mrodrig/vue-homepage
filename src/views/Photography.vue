@@ -21,10 +21,10 @@
 
         <h2>Recent Instagram Photos</h2>
         <div>
-            <div v-if="account" class="user">
+            <div v-if="account" v-show="userInfoLoaded" class="user">
                 <div class="user-picture user-info">
                     <a :href="instagramBaseUrl + account.username" target="_blank" rel="noopener" v-on:click="trackClick('profile_picture')">
-                        <img :src="account.profile_picture" alt="Instagram Profile Picture">
+                        <img :src="account.profile_picture" alt="Instagram Profile Picture" v-on:load="showUserInfo">
                     </a>
                 </div>
                 <div class="user-info">
@@ -94,6 +94,7 @@ export default {
     },
     data: function () {
         return {
+            userInfoLoaded: false,
             account: {},
             numberOfPhotos: 18,
             instagramBaseUrl: 'https://instagram.com/',
@@ -112,6 +113,9 @@ export default {
             });
     },
     methods: {
+        showUserInfo: function () {
+            this.userInfoLoaded = true;
+        },
         trackClick: function (eventLabel) {
             this.$ga.event({
                 eventCategory: 'photography',
@@ -129,6 +133,7 @@ export default {
             text-align: center;
             padding-top: 1.3em;
             padding-bottom: .3em;
+            transition: 0.3s ease;
 
             * {
                 vertical-align: middle;
