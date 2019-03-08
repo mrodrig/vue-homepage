@@ -2,10 +2,10 @@
     <div id="resume" class="center">
         <div id="download">
             <div class="download-link">
-                <a :href="pdfSource" target="_blank" rel="noopener"><arrow-down-bold-box /> Résumé</a>
+                <a :href="pdfSource" target="_blank" rel="noopener" v-on:click="trackClick('resume')"><arrow-down-bold-box /> Résumé</a>
             </div>
             <div class="download-link">
-                <a :href="cvSource" target="_blank" rel="noopener"><arrow-down-bold-box /> Curriculum Vitae (CV)</a>
+                <a :href="cvSource" target="_blank" rel="noopener" v-on:click="trackClick('cv')"><arrow-down-bold-box /> Curriculum Vitae (CV)</a>
             </div>
         </div>
         <div v-for="page in numPages" :id="page" :key="page">
@@ -61,7 +61,15 @@ export default {
             self.pdfData.then(pdf => {
                 self.numPages = pdf.numPages;
             });
+        },
+        trackClick: function (downloadType) {
+            this.$ga.event({
+                eventCategory: 'resume',
+                eventAction: 'download',
+                eventLabel: downloadType
+            });
         }
+
     }
 };
 </script>

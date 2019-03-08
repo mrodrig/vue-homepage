@@ -2,7 +2,7 @@
     <div class="project">
         <div v-if="project">
             <h3 class="project-title">
-                {{project.name}}
+                <a :href="project.url" target="_blank" rel="noopener" v-on:click="trackClick(project.name)">{{project.name}}</a>
             </h3>
             <div v-if="project.startDate" class="project-dates">
                 (<span v-if="project.startDate">{{project.startDate}}</span>
@@ -53,6 +53,15 @@ export default {
         descriptionType: function () {
             return typeof this.project.description;
         }
+    },
+    methods: {
+        trackClick: function (projectName) {
+            this.$ga.event({
+                eventCategory: 'projects',
+                eventAction: 'click',
+                eventLabel: projectName
+            });
+        }
     }
 };
 </script>
@@ -62,6 +71,16 @@ export default {
         .project-title {
             display: inline-block;
             min-width: 15em;
+
+            a {
+                color: black;
+                text-decoration: none;
+                transition: .3s;
+
+                &:hover {
+                    color: @lightblue;
+                }
+            }
         }
         .project-dates {
             display: inline-block;

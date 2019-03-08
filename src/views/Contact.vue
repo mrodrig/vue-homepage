@@ -3,7 +3,7 @@
         <div class="row">
             <p>
                 Prefer to use your email client? Click to send an email:
-                <a :href="mailTo" class="mailto" rel="noopener">{{destinationEmailAddress}}</a>.
+                <a :href="mailTo" class="mailto" rel="noopener" v-on:click="trackClick('mailTo')">{{destinationEmailAddress}}</a>.
             </p>
         </div>
 
@@ -25,7 +25,7 @@
                 <textarea id="message" v-model="body" name="text" placeholder="Message" rows="5" required />
             </div>
             <div id="button-wrap">
-                <input type="submit" class="button" value="Send Message">
+                <input type="submit" class="button" value="Send Message" v-on:click="trackClick('sendButton')">
             </div>
         </form>
     </div>
@@ -60,6 +60,15 @@ export default {
             return 'mailto: ' + this.destinationEmailAddress
                 + '?subject=' + this.subject
                 + '&body=' + this.body;
+        }
+    },
+    methods: {
+        trackClick: function (item) {
+            this.$ga.event({
+                eventCategory: 'contact',
+                eventAction: 'click',
+                eventLabel: item
+            });
         }
     }
 };

@@ -42,7 +42,7 @@ export default {
 
     #server, #courses {
         .project-title {
-            min-width: 26em;
+            min-width: 28em;
         }
     }
 }
