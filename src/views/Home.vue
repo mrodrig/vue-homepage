@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="home">
         <h2>Welcome</h2>
 
         <p>
@@ -72,5 +72,7 @@
 </template>
 
 <style lang="less">
-
+    #home {
+        margin: 0 2em;
+    }
 </style>

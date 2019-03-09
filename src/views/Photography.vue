@@ -129,6 +129,8 @@ export default {
 
 <style lang="less">
     #photography {
+        margin: 0 2em;
+
         .user {
             text-align: center;
             padding-top: 1.3em;
@@ -228,6 +230,36 @@ export default {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @media @upToNarrowQuery {
+        #photography {
+            #photos {
+                .photo {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    @media @extraNarrowAndUpQuery {
+        #photography {
+            #photos {
+                .photo {
+                    width: 50%;
+                }
+            }
+        }
+    }
+
+    @media @mediumAndUpQuery {
+        #photography {
+            #photos {
+                .photo {
+                    width: 33.3%;
                 }
             }
         }

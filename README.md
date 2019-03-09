@@ -33,3 +33,6 @@ References:
 * https://hackernoon.com/build-an-instagram-feed-app-with-just-javascript-using-expo-react-native-97c0e799b5cf
 * https://kevinongko.github.io/vue-instagram/
 * https://github.com/kevinongko/vue-instagram
+
+### Responsive Nav Bar
+* https://www.w3schools.com/howto/howto_js_topnav_responsive.asp

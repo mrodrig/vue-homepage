@@ -1,16 +1,18 @@
 <template>
     <div id="projects">
-        <div id="npm" class="projects-group">
-            <h2>Node Modules</h2>
-            <project v-for="npmProject in npmProjects" :key="npmProject.name" :project="npmProject" :type="'npm'" />
-        </div>
         <div id="server" class="projects-group">
             <h2>Website/Server Development and Management</h2>
             <project v-for="serverProject in serverProjects" :key="serverProject.name" :project="serverProject" :type="'server'" />
         </div>
+
         <div id="courses" class="projects-group">
             <h2>Course Projects</h2>
             <project v-for="courseProject in courseProjects" :key="courseProject.name" :project="courseProject" :type="'course'" />
+        </div>
+
+        <div id="npm" class="projects-group">
+            <h2>Node Modules</h2>
+            <project v-for="npmProject in npmProjects" :key="npmProject.name" :project="npmProject" :type="'npm'" />
         </div>
     </div>
 </template>
@@ -35,15 +37,15 @@ export default {
 </script>
 
 <style lang="less">
-#projects {
-    .projects-group {
-        padding-top: 1em;
-    }
+    #projects {
+        margin: 0 2em;
 
-    #server, #courses {
-        .project-title {
-            min-width: 28em;
+        .projects-group {
+            padding-top: 1em;
         }
     }
-}
+
+    @media @upToNarrowQuery {
+
+    }
 </style>

@@ -99,10 +99,11 @@ export default {
             }
         }
 
-        .page {
-            max-width:80%;
+        .inline {
+            display: inline-block;
         }
     }
+
     .center {
         text-align: center;
 
@@ -111,7 +112,36 @@ export default {
             width: 4em;
         }
     }
-    .inline {
-        display: inline-block;
+
+    @media @upToNarrowQuery {
+        #resume {
+            .page {
+                width: 100%;
+            }
+        }
+    }
+
+    @media @narrowAndUpQuery {
+        #resume {
+            .page {
+                width: 90%;
+            }
+        }
+    }
+
+    @media @mediumAndUpQuery {
+        #resume {
+            .page {
+                width: 70%;
+            }
+        }
+    }
+
+    @media @largeAndUpQuery {
+        #resume {
+            .page {
+                width: 60%;
+            }
+        }
     }
 </style>
