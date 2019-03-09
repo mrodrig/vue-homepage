@@ -1,7 +1,7 @@
 <template>
     <div id="tagline">
         <h1><a href="#" v-on:click="trackEvent('click')" v-on:mouseover="trackEvent('hover')">Michael Rodrigues</a></h1>
-        <p>Senior Web Applications Developer and Cybersecurity Professional</p>
+        <p id="secondary">Senior Web Applications Developer and Cybersecurity Professional</p>
     </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="less">
-#tagline {
+    #tagline {
     text-align: center;
     background-color: #f4f4f4;
 
@@ -54,4 +54,12 @@ export default {
         padding-bottom: 2em;
     }
 }
+
+    @media @upToNarrowQuery {
+        #tagline {
+            #secondary {
+                margin: 0 2em;
+            }
+        }
+    }
 </style>

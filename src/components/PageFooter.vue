@@ -1,7 +1,12 @@
 <template>
     <div id="footer">
         <div id="copyright">
-            &copy; 2014 - {{currentYear}} Michael Rodrigues. All Rights Reserved.
+            <span>
+                &copy; 2014 - {{currentYear}} Michael Rodrigues.
+            </span>
+            <span>
+                All Rights Reserved.
+            </span>
         </div>
         <div id="identities">
             <a :href="githubUrl" target="_blank" rel="noopener" v-on:click="trackClick('github')">
@@ -51,26 +56,36 @@ export default {
 </script>
 
 <style lang="less">
-#footer {
-    margin-top: 2em;
-    text-align: center;
+    #footer {
+        margin-top: 2em;
+        text-align: center;
 
-    #identities {
-        padding-top: 1em;
+        #identities {
+            padding-top: 1em;
 
-        a {
-            color: black;
-            padding: .4em;
-        }
+            a {
+                color: black;
+                padding: .4em;
+            }
 
-        .icon {
-            opacity: 0.5;
-            transition: 0.4s;
+            .icon {
+                opacity: 0.5;
+                transition: 0.4s;
 
-            &:hover {
-                opacity: 1;
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }
-}
+
+    @media @upToNarrowQuery {
+        #footer {
+            #copyright {
+                span {
+                    display: block;
+                }
+            }
+        }
+    }
 </style>
