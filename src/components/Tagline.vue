@@ -9,12 +9,6 @@
 export default {
     name: 'tagline',
     props: {},
-    data () {
-        return {
-            currentYear: (new Date()).getFullYear(),
-            iconSize: 36
-        };
-    },
     methods: {
         trackEvent: function (event) {
             this.$ga.event({
@@ -34,8 +28,8 @@ export default {
 
     h1 {
         padding-top: 1em;
-        margin-block-start: 0;
-        margin-block-end: 0;
+        margin-top: 0;
+        margin-bottom: 0;
 
         a {
             color: black;
@@ -49,8 +43,8 @@ export default {
     }
 
     p {
-        margin-block-start: 0em;
-        margin-block-end: 0;
+        margin-top: 0;
+        margin-bottom: 0;
         padding-bottom: 2em;
     }
 }
