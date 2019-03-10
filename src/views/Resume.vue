@@ -14,13 +14,12 @@
 
 <script>
 import ArrowDownBoldBox from 'vue-material-design-icons/ArrowDownBoldBox.vue';
-import Pdf from '../components/Pdf.vue';
 
 export default {
     name: 'resume',
     components: {
         ArrowDownBoldBox,
-        Pdf
+        Pdf: () => import('../components/Pdf.vue')
     },
     data () {
         return {
