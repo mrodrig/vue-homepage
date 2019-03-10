@@ -1,42 +1,63 @@
 <template>
     <div id="resume" class="center">
-        <div id="download">
-            <div class="download-link">
-                <a :href="resumeSource" target="_blank" rel="noopener" v-on:click="trackClick('resume')"><arrow-down-bold-box /> Résumé</a>
-            </div>
-            <div class="download-link">
-                <a :href="cvSource" target="_blank" rel="noopener" v-on:click="trackClick('cv')"><arrow-down-bold-box /> Curriculum Vitae (CV)</a>
+        <div v-for="page in numPages" :id="page" :key="page">
+            <pdf :page="page" :src="pdfData" :scale="scale" :resize="true" class="inline page">
+                <template slot="loading">
+                    <div class="center">
+                        <p>Please wait, résumé loading...</p>
+                        <img id="loading" src="../assets/spinner-icon.gif" alt="Loading icon">
+                    </div>
+                </template>
+            </pdf>
+            <div v-if="numPages > 1" class="center">
+                {{page}} of {{numPages}}
             </div>
         </div>
-        <pdf :src="resumeSource" />
     </div>
 </template>
 
 <script>
-import ArrowDownBoldBox from 'vue-material-design-icons/ArrowDownBoldBox.vue';
-import Pdf from '../components/Pdf.vue';
+import pdf from 'pdfvuer';
 
 export default {
     name: 'resume',
     components: {
-        ArrowDownBoldBox,
-        Pdf
+        pdf
+    },
+    props: {
+        src: {
+            type: String,
+            default: () => ''
+        }
     },
     data () {
         return {
-            resumeSource: 'pdf/resume.pdf',
-            cvSource: 'pdf/cv.pdf'
+            numPages: 0,
+            pdfData: undefined,
+            scale: 'page-width'
         };
     },
+    watch: {
+        src: function () {
+            this.load();
+        }
+    },
+    created () {
+        this.load();
+    },
     methods: {
-        trackClick: function (downloadType) {
-            this.$ga.event({
-                eventCategory: 'resume',
-                eventAction: 'download',
-                eventLabel: downloadType
+        load: function () {
+            if (this.src) {
+                return this.getPdf();
+            }
+        },
+        getPdf: function () {
+            let self = this;
+            self.pdfData = pdf.createLoadingTask(this.src);
+            self.pdfData.then(pdf => {
+                self.numPages = pdf.numPages;
             });
         }
-
     }
 };
 </script>
