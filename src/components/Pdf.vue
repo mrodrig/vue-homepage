@@ -18,6 +18,8 @@
 
 <script>
 import pdf from 'pdfvuer';
+// Symbol iterator polyfill for IE 11
+import 'core-js/fn/symbol/iterator.js';
 
 export default {
     name: 'resume',
