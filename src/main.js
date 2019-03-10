@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import 'es6-promise/auto';      // IE promise polyfill for use with axios
+import 'core-js/fn/es6/promise.js'; // Promise polyfill for IE
 import App from './App.vue';
 import router from './router';
 import VueAnalytics from 'vue-analytics';

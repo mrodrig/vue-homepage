@@ -1,4 +1,5 @@
-import 'es6-promise/auto';      // IE promise polyfill for use with axios
+// TODO: still needed with promise polyfill loaded at top level?
+import 'core-js/fn/es6/promise.js'; // Promise polyfill for IE
 import axios from 'axios';
 
 export default class Api {
