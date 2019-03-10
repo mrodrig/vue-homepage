@@ -8,19 +8,19 @@
                 <a :href="cvSource" target="_blank" rel="noopener" v-on:click="trackClick('cv')"><arrow-down-bold-box /> Curriculum Vitae (CV)</a>
             </div>
         </div>
-        <pdf :src="resumeSource" />
+        <!--<pdf :src="resumeSource" />-->
     </div>
 </template>
 
 <script>
 import ArrowDownBoldBox from 'vue-material-design-icons/ArrowDownBoldBox.vue';
-import Pdf from '../components/Pdf.vue';
+// import Pdf from '../components/Pdf.vue';
 
 export default {
     name: 'resume',
     components: {
         ArrowDownBoldBox,
-        Pdf
+        // Pdf
     },
     data () {
         return {
