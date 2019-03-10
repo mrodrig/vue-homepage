@@ -4,7 +4,7 @@
             <pdf :page="page" :src="pdfData" :scale="scale" :resize="true" class="inline page">
                 <template slot="loading">
                     <div class="center">
-                        <p>Please wait, résumé loading...</p>
+                        <p>Please wait, loading...</p>
                         <img id="loading" src="../assets/spinner-icon.gif" alt="Loading icon">
                     </div>
                 </template>
@@ -34,7 +34,7 @@ export default {
     },
     data () {
         return {
-            numPages: 0,
+            numPages: 1,
             pdfData: undefined,
             scale: 'page-width'
         };
