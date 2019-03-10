@@ -52,7 +52,7 @@ export default {
             return this.type === 'npm';
         },
         downloadsPerMonthBadgeUrl: function() {
-            return 'http://img.shields.io/npm/dm/' + this.project.name + '.svg';
+            return 'https://img.shields.io/npm/dm/' + this.project.name + '.svg';
         },
         versionBadgeUrl: function () {
             return 'https://img.shields.io/npm/v/' + this.project.name + '.svg';

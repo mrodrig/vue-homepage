@@ -66,14 +66,16 @@ export default {
             a {
                 color: black;
                 padding: .4em;
-            }
 
-            .icon {
-                opacity: 0.5;
-                transition: 0.4s;
+                .icon {
+                    opacity: 0.5;
+                    transition: 0.4s;
+                }
 
                 &:hover {
-                    opacity: 1;
+                    .icon {
+                        opacity: 1;
+                    }
                 }
             }
         }
