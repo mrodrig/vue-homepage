@@ -8,12 +8,7 @@
                 <a :href="cvSource" target="_blank" rel="noopener" v-on:click="trackClick('cv')"><arrow-down-bold-box /> Curriculum Vitae (CV)</a>
             </div>
         </div>
-        <!--[if lte IE 9]>
-            <p>Unfortunately, your browser does not support a PDF preview.</p>
-        <![endif]-->
-        <!--[if !IE]>
-            <pdf :src="resumeSource" />
-        <![endif]-->
+        <pdf :src="resumeSource" />
     </div>
 </template>
 
