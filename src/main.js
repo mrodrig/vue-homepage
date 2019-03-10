@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import 'core-js/es6/promise.js'; // Promise polyfill for IE
+import 'core-js/es6/promise.js';   // Promise polyfill for IE
 import 'core-js/fn/array/find.js'; // Array.find polyfill for IE
 import App from './App.vue';
 import router from './router';

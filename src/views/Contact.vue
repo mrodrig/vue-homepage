@@ -78,7 +78,6 @@ export default {
     #contact {
         padding: 2em 0;
 
-
         .row {
             text-align: center;
 
@@ -92,13 +91,12 @@ export default {
                 padding: .375rem .75rem;
                 width: 50%;
                 font-size: 1rem;
-                line-height: 2em;
+                min-height: 2em;
                 color: @darkgray;
                 background-color: @white;
-                background-clip: padding-box;
                 border: 1px solid @lightgray;
                 border-radius: .25rem;
-                transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                transition: .15s ease;
                 overflow: visible;
 
                 &:focus {
@@ -109,33 +107,22 @@ export default {
             }
         }
 
-        /*
-         * Button centering styles from:
-         *   https://stackoverflow.com/questions/7560832/how-to-center-a-button-within-a-div
-         */
         #button-wrap {
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
 
             input[type=submit] {
                 color: @white;
-                -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-                -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-                -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-                transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
                 background-color: @darkgray;
-                border-radius: .32em;
+                border-radius: .4em;
                 border: 0;
                 cursor: pointer;
-                line-height: 2.75em;
+                height: 4em;
+                width: 9em;
                 text-align: center;
-                text-decoration: none;
                 font-weight: bold;
-                letter-spacing: -0.025em;
-                padding: .5em 1.5em;
                 font-size: .9em;
+                transition: 0.3s;
 
                 &:hover {
                     background-color: black;
