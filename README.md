@@ -36,3 +36,7 @@ References:
 
 ### Responsive Nav Bar
 * https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
+
+### Rollbar with Vue
+* https://docs.rollbar.com/docs/vue-js
+* https://www.npmjs.com/package/vue-rollbar
