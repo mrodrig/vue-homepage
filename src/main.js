@@ -33,6 +33,13 @@ Vue.use(Rollbar, {
     environment: process.env.NODE_ENV
 });
 
+Vue.config.errorHandler = function (err, vm, info) {
+    Vue.rollbar.error(err, {
+        vm,
+        info
+    });
+};
+
 new Vue({
     router,
     render: h => h(App)
