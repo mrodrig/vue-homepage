@@ -9,20 +9,6 @@ import Rollbar from 'vue-rollbar';
 Vue.config.productionTip = false;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-// Configure Google Analytics
-Vue.use(VueAnalytics, {
-    id: 'UA-135518236-1',
-    router: router,
-    trackEvent: true,
-    debug: IS_PRODUCTION ? {} : {
-        // Enable analytics logging for development, but don't actually send info.
-        // from: https://github.com/MatteoGabriele/vue-analytics/issues/15
-        enabled: true,
-        trace: true,
-        sendHitTask: false // Do not actually send analytics events
-    }
-});
-
 // Configure Rollbar for Client-side Error Logging
 Vue.use(Rollbar, {
     accessToken: '6ed9137f753d4b539bfb5845a1e6d84d',
@@ -39,6 +25,20 @@ Vue.config.errorHandler = function (err, vm, info) {
         info
     });
 };
+
+// Configure Google Analytics
+Vue.use(VueAnalytics, {
+    id: 'UA-135518236-1',
+    router: router,
+    trackEvent: true,
+    debug: IS_PRODUCTION ? {} : {
+        // Enable analytics logging for development, but don't actually send info.
+        // from: https://github.com/MatteoGabriele/vue-analytics/issues/15
+        enabled: true,
+        trace: true,
+        sendHitTask: false // Do not actually send analytics events
+    }
+});
 
 new Vue({
     router,
