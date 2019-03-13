@@ -1,5 +1,8 @@
 # vue-homepage
 
+**This project has been archived because the code is now merged into the [@mrodrig/mrodrig.github.io](https://github.com/mrodrig/mrodrig.github.io) repository.**
+**Additionally, the code is now deployed at [mrodrig.github.io](https://mrodrig.github.io).**
+
 ## Project setup
 ```
 npm install
